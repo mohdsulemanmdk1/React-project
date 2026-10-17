@@ -3,6 +3,7 @@ import { baseUrl } from '../utils/url'
 import {Link} from 'react-router-dom'
 
 const Card = ({url}) => {
+
   return (
     <Link to={`/menuCard/${url.info.id}`}>
     <div className='card'>

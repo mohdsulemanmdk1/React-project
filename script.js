@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import  useCreateContext  from './src/utils/useCreateContext';
 
-import { RouterProvider, createBrowserRouter,
+import {
+    RouterProvider, createBrowserRouter,
     Outlet
- } from "react-router-dom";
+} from "react-router-dom";
 import ReactDOM from 'react-dom/client'
 import Header from './src/components/Header'
 import Body from './src/components/Body'
@@ -14,47 +16,62 @@ import Footer from './src/components/Footer'
 import { swiggyUrl } from './src/utils/url'
 import MenuCard from './src/components/MenuCard';
 
-let App = ()=>{
+import { lazy, Suspense } from 'react'
+
+import Grocery from "./src/pages/Grocery";
+
+
+
+let App = () => {
 
 
     return (
         <div>
-            <Header/>
-            <Outlet/>
-            <Footer/>
+            <useCreateContext.Provider value={{ name: "salman" }}>
+
+                <Header />
+                {/* <Grocery/> */}
+                <Outlet />
+                <Footer />
+            </useCreateContext.Provider>
         </div>
     )
 }
 
 let appRouter = createBrowserRouter([
     {
-        path:'/',
-        element: <App/>,
-        children:[
+        path: '/',
+        element: <App />,
+        children: [
             {
                 path: '/',
-                element: <Home/>
+                element: <Home />
             },
             {
                 path: '/about',
-                element: <About/>
+                element: <About />
             },
             {
                 path: '/contact',
-                element: <Contact/>
+                element: <Contact />
             },
             {
                 path: '/settings',
-                element: <Settings/>
+                element: <Settings />
             },
             {
                 path: '/menuCard/:id',
-                element: <MenuCard/>
-            }
+                element: <MenuCard />
+            },
+            {
+                path: '/grocery',
+                element: <Grocery />
+            },
+
         ]
     }
 ])
 
 
 let root = ReactDOM.createRoot(document.querySelector("#root"))
-root.render(<RouterProvider router={appRouter}/>)
+root.render(<RouterProvider router={appRouter} />)
