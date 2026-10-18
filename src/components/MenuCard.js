@@ -11,7 +11,6 @@ const MenuCard = () => {
 
   const menu = useFetchUrl() //menu
   const menu1 = useFetchCategory() //filterdArr
-
   if (menu == null) {
     return <h2>Loading menu...</h2>
   }
@@ -22,19 +21,12 @@ const MenuCard = () => {
       {menu1.map((e,index) => {
         return <MenuCategory category={e.card.card} key={e.card.card.categoryId} command={index == showIndex ? true : false } 
         setIndex={()=>{
-          setShowIndex(index)
+          setShowIndex(index == showIndex ? null : index)
         }}
         />
 
       })}
-      {/* {menu1.map((e,index) => {
-        return <MenuCategory category={e.card.card} key={e.card.card.categoryId} command={index == showIndex ? true : false } 
-        setIndex={()=>{
-          setShowIndex(index)
-        }}
-        />
-
-      })} */}
+     
     </div>
   )
 }

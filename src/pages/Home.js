@@ -3,22 +3,10 @@ import { Link } from 'react-router-dom'
 import Body from '../components/Body'
 import { swiggyUrl } from '../utils/url'
 import { useState,useEffect } from 'react'
+import useOfficialUrl from '../utils/useOfficialUrl'
 
 const Home = () => {
-
-
-    const [url,setUrl] = useState([])
-    let  fetchFunc = async function(){
-        let response = await fetch(swiggyUrl)
-        let data = await response.json()
-        
-        setUrl(data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-            ?.restaurants,)
-        }
-        useEffect(()=>{
-            
-            fetchFunc()
-        },[])     
+    let url = useOfficialUrl() // url 
 
 
 

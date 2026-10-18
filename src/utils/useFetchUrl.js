@@ -13,7 +13,7 @@ const [menu,setMenu] = useState(null)
 
 
         setMenu(data)
-        // console.log(data)
+        console.log(data)
         
     }
 

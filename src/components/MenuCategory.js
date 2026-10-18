@@ -5,12 +5,11 @@ const MenuCategory = ({ category,command,setIndex}) => {
 
 
 
-  const [showItems,setShowItems ] = useState(command)
+
   return (
     <div className='category'>
       <div className='accordian-head' onClick={()=>{
         setIndex()
-        setShowItems(!showItems)
       }} >
 
         <p className='acc-head-title'>{category.title}</p>
