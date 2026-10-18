@@ -10,7 +10,6 @@ const useDiscountLable = (Card)=>{
 
         }
     return discountLable;
-
 }
 
 export default useDiscountLable;
